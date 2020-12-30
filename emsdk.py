@@ -2029,7 +2029,7 @@ def find_sdk(name):
 
 def is_os_64bit():
   # http://stackoverflow.com/questions/2208828/detect-64bit-os-windows-in-python
-  return platform.machine().endswith('64')
+  return "64bit" in platform.architecture() or platform.machine().endswith('64')
 
 
 def find_latest_releases_version():
