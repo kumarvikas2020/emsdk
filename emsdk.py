@@ -118,6 +118,8 @@ elif machine.startswith('aarch64') or machine.lower().startswith('arm64'):
   ARCH = 'aarch64'
 elif platform.machine().startswith('arm'):
   ARCH = 'arm'
+elif 'ppc64le' in platform.machine():
+  ARCH = platform.machine().lower()
 else:
   errlog("Warning: unknown machine architecture " + machine)
   errlog()
