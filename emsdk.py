@@ -118,6 +118,8 @@ elif machine.startswith('aarch64') or machine.lower().startswith('arm64'):
   ARCH = 'aarch64'
 elif platform.machine().startswith('arm'):
   ARCH = 'arm'
+elif 'ppc64le' in platform.machine():
+  ARCH = platform.machine().lower()
 else:
   errlog("Warning: unknown machine architecture " + machine)
   errlog()
@@ -2022,7 +2024,7 @@ def find_sdk(name):
 
 def is_os_64bit():
   # http://stackoverflow.com/questions/2208828/detect-64bit-os-windows-in-python
-  return platform.machine().endswith('64')
+  return "64bit" in platform.architecture() or platform.machine().endswith('64')
 
 
 def find_latest_releases_version():
